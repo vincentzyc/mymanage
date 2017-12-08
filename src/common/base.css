@@ -1,0 +1,61 @@
+/* reset Ant Design style */
+
+/* reset Ant Design style end*/
+#root,
+.wrapper,
+body,
+html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.topbar {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100px;
+    font-size: 22px;
+    line-height: 100px;
+    color: #fff;
+    background-color: #001529;
+}
+.sidebar {
+    display: block;
+    position: absolute;
+    width: 250px;
+    left: 0;
+    top: 100px;
+    bottom: 0;
+    background-color: #001529;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.sidebar::-webkit-scrollbar {
+    display: none;
+}
+.content {
+    background: none repeat scroll 0 0 #fff;
+    position: absolute;
+    left: 250px;
+    right: 0;
+    top: 100px;
+    bottom: 0;
+    width: auto;
+    padding: 40px;
+    box-sizing: border-box;
+    overflow: auto;
+}
+.topbar-container {
+    box-shadow: 0 2px 0px -1px rgba(0, 0, 0, 0.05);
+}
+.topbar-logo {
+    margin-left: 50px;
+    width: 100px;
+    height: 100px;
+}
+.topbar-userinfo {
+    float: right;
+    padding-right: 50px;
+    font-size: 16px;
+    color: #fff;
+}

@@ -1,30 +1,38 @@
-import React, { Component } from "react";
-import { NavBar, Icon } from "antd-mobile";
-
-// const back = () => {
-//     window.history.back();
-// };
-
-class Header extends Component {
-    constructor(props) {
-        super(props);
-        // console.log(props);
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    handleClick() {}
+import React from "react";
+import { Link } from "react-router-dom";
+import { Menu, Dropdown, Icon } from "antd";
+class Header extends React.Component {
     render() {
-        const { goBack } = this.props.history;
+        const userName = window.localStorage.getItem("y_userName");
+        const menu = (
+            <Menu>
+                <Menu.Item>
+                    <a
+                        rel="noopener noreferrer"
+                        onClick={() => {
+                            window.localStorage.removeItem("y_userName");
+                            window.location.replace("/login");
+                        }}
+                    >
+                        安全退出
+                    </a>
+                </Menu.Item>
+            </Menu>
+        );
         return (
-            <header className="header_fixed">
-                <NavBar
-                    icon={this.props.location.pathname==='/'? '':<Icon type="left" />}
-                    onLeftClick={goBack}
-                >
-                    Vincent
-                </NavBar>
-                {/* <img src={require("../common/img/back.png")} alt="back" className="backicon" onClick={back} style={this.props.location.pathname==='/'?{display:'none'}:{}}/>
-                <h3 className="cfff">Vincent</h3> */}
+            <header className="topbar">
+                <div className="topbar-container">
+                    <Link to="/">
+                        <img className="topbar-logo" src={require("../common/img/logo.svg")} alt="logo" />
+                    </Link>
+                    <div className="topbar-userinfo">
+                        <Dropdown overlay={menu} trigger={["click"]}>
+                            <a className="ant-dropdown-link">
+                                Hello {userName} <Icon type="down" />
+                            </a>
+                        </Dropdown>
+                    </div>
+                </div>
             </header>
         );
     }
