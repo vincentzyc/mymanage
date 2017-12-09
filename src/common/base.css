@@ -9,6 +9,9 @@ html {
     height: 100%;
     overflow: hidden;
 }
+.wrapper {
+    background-color: #001529;
+}
 .topbar {
     position: relative;
     box-sizing: border-box;
@@ -58,4 +61,26 @@ html {
     padding-right: 50px;
     font-size: 16px;
     color: #fff;
+}
+.loginForm {
+    width: 400px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 50px 50px 20px 50px;
+    border-radius: 10px;
+}
+.loginForm .login-form {
+    max-width: 300px;
+}
+.loginForm .login-form-forgot {
+    float: right;
+}
+.loginForm .login-form-button {
+    width: 100%;
+}
+.ant-menu.ant-menu-dark.ant-menu-inline .ant-menu-item{
+    margin-top: 0;
 }

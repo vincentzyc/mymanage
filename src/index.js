@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import RouterConfig from "./router/router";
+import App from "./App";
 import './common/base.css';
 
 ReactDOM.render(
-    <RouterConfig />,
+    <App />,
   document.getElementById('root')
 );
