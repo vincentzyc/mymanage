@@ -5,25 +5,12 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            pageLoading: true,
-            gridData: [],
-            selectedIndex:1,
-            allData: { headbannerItem: [], funcviewItem: [] }
+            
         };
     }
     componentWillMount() {
-        let gridData = [];
-        api.vkcPost("supermarketloan/homepage/allviews", { param: {} }, res => {
+        api.jqPost("supermarketloan/homepage/allviews", { param: {} }, res => {
             console.log(res);
-            res.funcviewItem.forEach(v => {
-                gridData.push({
-                    icon: v.logo,
-                    text: v.tagName
-                });
-            });
-            this.setState({ gridData: gridData });
-            this.setState({ pageLoading: false });
-            this.setState({ allData: res });
         });
     }
 
