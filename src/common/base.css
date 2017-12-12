@@ -1,5 +1,7 @@
 /* reset Ant Design style */
-
+.ant-menu.ant-menu-dark.ant-menu-inline .ant-menu-item {
+    margin-top: 0;
+}
 /* reset Ant Design style end*/
 #root,
 .wrapper,
@@ -12,6 +14,17 @@ html {
 .wrapper {
     background-color: #001529;
 }
+/* react-router-transition */
+.switch-wrapper {
+    position: relative;
+    min-width: 900px;
+    height: 100%;
+}
+.switch-wrapper > div {
+    width: 100%;
+    position: absolute;
+}
+/* react-router-transition end*/
 .topbar {
     position: relative;
     box-sizing: border-box;
@@ -80,7 +93,4 @@ html {
 }
 .login-form.loginForm .login-form-button {
     width: 100%;
-}
-.ant-menu.ant-menu-dark.ant-menu-inline .ant-menu-item{
-    margin-top: 0;
 }

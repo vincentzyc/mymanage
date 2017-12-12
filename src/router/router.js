@@ -1,6 +1,7 @@
 import React from "react";
-import { BrowserRouter, Route, Switch,Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Bundle from "./Bundle";
+import { AnimatedSwitch } from "react-router-transition";
 import Containers from "../components/Containers";
 
 const Login = props => <Bundle load={() => import("../components/Login")}>{Login => <Login {...props} />}</Bundle>;
@@ -21,7 +22,7 @@ class routerList extends React.Component {
                         path="/"
                         render={({ history, location }) => (
                             <Containers history={history} location={location}>
-                                <Switch>
+                                <AnimatedSwitch atEnter={{ opacity: 0 }} atLeave={{ opacity: 0 }} atActive={{ opacity: 1 }} className="switch-wrapper">
                                     <Route exact path="/" component={Home} />
                                     <Route path="/roster" component={Roster} />
                                     <Route path="/todolist" component={Todolist} />
@@ -29,7 +30,7 @@ class routerList extends React.Component {
                                     <Route path="/checkphone" component={CheckPhone} />
                                     <Route path="/userinfo" component={UserInfo} />
                                     <Redirect replace to="/" />
-                                </Switch>
+                                </AnimatedSwitch>
                             </Containers>
                         )}
                     />

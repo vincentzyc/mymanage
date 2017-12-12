@@ -3,6 +3,7 @@ import { Route, Redirect } from "react-router-dom";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 
+
 class containers extends React.Component {
     render() {
         let isLogin = window.localStorage.getItem("y_userName");
@@ -11,7 +12,7 @@ class containers extends React.Component {
                 <Route path="/" component={Header} />
                 <Route path="/" component={Sidebar} />
                 <div className="content">
-                    <div style={{ minWidth: "900px" }}>{this.props.children}</div>
+                    {this.props.children}
                 </div>
             </div>
         ) : (
