@@ -1,11 +1,12 @@
 import React from "react";
-import { getUserInfo, getFail } from "../redux/actions/actions";
+import { getUserInfo, getList } from "../redux/actions/actions";
 import { connect } from "react-redux";
+import api from '../common/api';
 
 class ListExample extends React.Component {
     constructor(props) {
         super(props);
-        this.props.getFail();
+        this.props.getlist();
     }
     render() {
         if (this.props.NoInfo.list) {
@@ -26,9 +27,15 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = {
-    getUserInfo,
-    getFail
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getUserInfo,
+        getlist: () => {
+            api.jqPost('supermarketloan/getlist','',(res)=>{
+                return dispatch(getList(res));
+            })
+        }
+    }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListExample);

@@ -11,14 +11,11 @@ function getSuccess(data) {
         payload: data
     }
 }
-export function getFail() {
-    return (dispatch)=> {
-        api.jqPost('supermarketloan/getlist','',(res)=>{
-            return dispatch({
-                type: GET_FAIL,
-                payload: res
-            });
-        })
+
+export function getList(data) {
+    return {
+        type: GET_FAIL,
+        payload: data
     }
 }
 export function getUserInfo() {
