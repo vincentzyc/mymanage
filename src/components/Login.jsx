@@ -8,15 +8,15 @@ class NormalLoginForm extends React.Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 window.localStorage.setItem("y_userName", values.userName);
-                window.location.replace("/");
+                this.props.history.replace('/');
             }
         });
     };
     render() {
         const { getFieldDecorator } = this.props.form;
         return (
-            <div className="loginForm">
-                <Form onSubmit={this.handleSubmit} className="login-form">
+            <div className="wrapper">
+                <Form onSubmit={this.handleSubmit} className="login-form loginForm">
                     <FormItem>
                         {getFieldDecorator("userName", {
                             rules: [{ required: true, message: "Please input your username!" }]

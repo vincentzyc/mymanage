@@ -11,7 +11,7 @@ class Header extends React.Component {
                         rel="noopener noreferrer"
                         onClick={() => {
                             window.localStorage.removeItem("y_userName");
-                            window.location.replace("/login");
+                            this.props.history.replace("/login");
                         }}
                     >
                         安全退出

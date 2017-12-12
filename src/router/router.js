@@ -1,7 +1,9 @@
 import React from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch,Redirect } from "react-router-dom";
 import Bundle from "./Bundle";
+import Containers from "../components/Containers";
 
+const Login = props => <Bundle load={() => import("../components/Login")}>{Login => <Login {...props} />}</Bundle>;
 const Home = props => <Bundle load={() => import("../pages/Home")}>{Home => <Home {...props} />}</Bundle>;
 const Roster = props => <Bundle load={() => import("../pages/Roster")}>{Roster => <Roster {...props} />}</Bundle>;
 const Todolist = props => <Bundle load={() => import("../pages/todolist/todolist")}>{Todolist => <Todolist {...props} />}</Bundle>;
@@ -12,16 +14,27 @@ const UserInfo = props => <Bundle load={() => import("../pages/UserInfo")}>{User
 class routerList extends React.Component {
     render() {
         return (
-            <Switch>
-                <Route exact path="/" component={Home} />
-                <Route path="/home" component={Home} />
-                <Route path="/roster" component={Roster} />
-                <Route path="/todolist" component={Todolist} />
-                <Route path="/me" component={Me} />
-                <Route path="/checkphone" component={CheckPhone} />
-                <Route path="/userinfo" component={UserInfo} />
-                <Redirect replace to="/" />
-            </Switch>
+            <BrowserRouter>
+                <Switch>
+                    <Route exact path="/login" component={Login} />
+                    <Route
+                        path="/"
+                        render={({ history, location }) => (
+                            <Containers history={history} location={location}>
+                                <Switch>
+                                    <Route exact path="/" component={Home} />
+                                    <Route path="/roster" component={Roster} />
+                                    <Route path="/todolist" component={Todolist} />
+                                    <Route path="/me" component={Me} />
+                                    <Route path="/checkphone" component={CheckPhone} />
+                                    <Route path="/userinfo" component={UserInfo} />
+                                    <Redirect replace to="/" />
+                                </Switch>
+                            </Containers>
+                        )}
+                    />
+                </Switch>
+            </BrowserRouter>
         );
     }
 }

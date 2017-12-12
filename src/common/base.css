@@ -62,7 +62,7 @@ html {
     font-size: 16px;
     color: #fff;
 }
-.loginForm {
+.login-form.loginForm {
     width: 400px;
     position: absolute;
     top: 40%;
@@ -72,13 +72,13 @@ html {
     padding: 50px 50px 20px 50px;
     border-radius: 10px;
 }
-.loginForm .login-form {
+.login-form.loginForm .login-form {
     max-width: 300px;
 }
-.loginForm .login-form-forgot {
+.login-form.loginForm .login-form-forgot {
     float: right;
 }
-.loginForm .login-form-button {
+.login-form.loginForm .login-form-button {
     width: 100%;
 }
 .ant-menu.ant-menu-dark.ant-menu-inline .ant-menu-item{
