@@ -11,6 +11,7 @@ class Sider extends React.Component {
             <div className="sidebar">
                 <Menu onClick={this.handleClick} style={{ width: 250 }} defaultSelectedKeys={[this.props.location.pathname]} mode="inline" theme="dark">
                     <Menu.Item key="/">Home</Menu.Item>
+                    <Menu.Item key="/order">申请订单管理</Menu.Item>
                     <Menu.Item key="/roster">Roster</Menu.Item>
                     <Menu.Item key="/todolist">TodoList</Menu.Item>
                     <Menu.Item key="/me">Me</Menu.Item>

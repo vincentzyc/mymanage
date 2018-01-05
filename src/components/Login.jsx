@@ -1,5 +1,7 @@
 import React from "react";
-import { Form, Icon, Input, Button } from "antd";
+import { Form, Icon, Input, Button, Modal } from "antd";
+import api from "../common/api";
+
 const FormItem = Form.Item;
 
 class NormalLoginForm extends React.Component {
@@ -7,8 +9,17 @@ class NormalLoginForm extends React.Component {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                window.localStorage.setItem("y_userName", values.userName);
-                this.props.history.replace('/');
+                api.jqPost("login", { userName: values.userName, password: values.password }, res => {
+                    console.log(res);
+                    if (res.code === 0) {
+                        window.localStorage.setItem("y_userName", values.userName);
+                        this.props.history.replace("/");
+                        return;
+                    }
+                    Modal.error({
+                        title: '用户名或密码错误'
+                    });
+                });
             }
         });
     };

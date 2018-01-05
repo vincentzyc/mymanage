@@ -1,15 +1,16 @@
 /* eslint-disable */
 const api = {
     baseUrl() {
-        if (process.env.NODE_ENV === "development") {
-            return "http://120.25.85.234:20525/";
-        }
-        return "http://www.52zhudai.com/";
+        // if (process.env.NODE_ENV === "development") {
+            // return "http://120.25.85.234:20525/";
+        return "http://192.168.218.247:8022/";
+        // }
+        // return "http://www.52zhudai.com/";
     },
     jqPost(url, data, callback) {
         $.ajax({
             type: "POST",
-            url: url,
+            url: this.baseUrl()+url,
             async: true, //true=>异步，会继续执行后续代码; false=>同步，直到这个AJAX执行完毕后才会继续执行后续代码
             data: data,
             success: callback,
@@ -20,9 +21,10 @@ const api = {
         });
     },
     ServiceProxy() {
-        if (process.env.NODE_ENV === "development") {
-            return "http://120.25.85.234:20522/ServiceProxy.aspx";
-        }
+        // if (process.env.NODE_ENV === "development") {
+        return "http://192.168.218.227:8081/ServiceProxy.aspx";
+        //     return "http://120.25.85.234:20522/ServiceProxy.aspx";
+        // }
         return "http://transfer.liulianglf.com/ServiceProxy.aspx";
     },
     _vkcServer: null,
@@ -69,7 +71,7 @@ const api = {
      * @param callback  成功后回调
      * return 返回所有后台数据
      */
-    vkcPostall(url, data, callback) {
+    vkcPostAll(url, data, callback) {
         this.getVkcServer()
             .ajax(this.baseUrl() + url, data)
             .done(res => {

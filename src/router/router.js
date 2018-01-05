@@ -11,6 +11,7 @@ const Todolist = props => <Bundle load={() => import("../pages/todolist/todolist
 const Me = props => <Bundle load={() => import("../pages/Me")}>{Me => <Me {...props} />}</Bundle>;
 const CheckPhone = props => <Bundle load={() => import("../pages/Check_phone")}>{CheckPhone => <CheckPhone {...props} />}</Bundle>;
 const UserInfo = props => <Bundle load={() => import("../pages/UserInfo")}>{UserInfo => <UserInfo {...props} />}</Bundle>;
+const Order = props => <Bundle load={() => import("../pages/Order")}>{Order => <Order {...props} />}</Bundle>;
 
 // we need to map the `scale` prop we define below
 // to the transform style property
@@ -70,6 +71,7 @@ class routerList extends React.Component {
                                     <Route path="/me" component={Me} />
                                     <Route path="/checkphone" component={CheckPhone} />
                                     <Route path="/userinfo" component={UserInfo} />
+                                    <Route path="/order" component={Order} />
                                     <Redirect replace to="/" />
                                 </AnimatedSwitch>
                             </Containers>

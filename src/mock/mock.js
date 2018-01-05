@@ -1,8 +1,17 @@
 import Mock from 'mockjs';
-
+import api from '../common/api';
 // Mock.mock(/supermarketloan/, {}) 正则 所有包含supermarketloan的url
+Mock.setup({
+    timeout: '30-500'
+})
 
-Mock.mock('/api/user', {
+Mock.mock(api.baseUrl()+'getuserinfo', {
+    'name': '@cname',
+    'age|10-76': 20
+});
+
+Mock.mock(api.baseUrl()+'login', {
+    'code': 0,
     'name': '@cname',
     'age|10-76': 20
 });
