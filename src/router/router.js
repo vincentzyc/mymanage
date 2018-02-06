@@ -4,14 +4,16 @@ import Bundle from "./Bundle";
 import { spring, AnimatedSwitch } from "react-router-transition";
 import Containers from "../components/Containers";
 
-const Login = props => <Bundle load={() => import("../components/Login")}>{Login => <Login {...props} />}</Bundle>;
-const Home = props => <Bundle load={() => import("../pages/Home")}>{Home => <Home {...props} />}</Bundle>;
-const Roster = props => <Bundle load={() => import("../pages/Roster")}>{Roster => <Roster {...props} />}</Bundle>;
-const Todolist = props => <Bundle load={() => import("../pages/todolist/todolist")}>{Todolist => <Todolist {...props} />}</Bundle>;
-const Me = props => <Bundle load={() => import("../pages/Me")}>{Me => <Me {...props} />}</Bundle>;
-const CheckPhone = props => <Bundle load={() => import("../pages/Check_phone")}>{CheckPhone => <CheckPhone {...props} />}</Bundle>;
-const UserInfo = props => <Bundle load={() => import("../pages/UserInfo")}>{UserInfo => <UserInfo {...props} />}</Bundle>;
-const Order = props => <Bundle load={() => import("../pages/Order")}>{Order => <Order {...props} />}</Bundle>;
+const Login = props => createComponent(props, () => import("../components/Login"));
+const Home = props => createComponent(props, () => import("../pages/Home"));
+const Roster = props => createComponent(props, () => import("../pages/Roster"));
+const Todolist = props => createComponent(props, () => import("../pages/todolist/todolist"));
+const Me = props => createComponent(props, () => import("../pages/Me"));
+const CheckPhone = props => createComponent(props, () => import("../pages/Check_phone"));
+const UserInfo = props => createComponent(props, () => import("../pages/UserInfo"));
+const Order = props => createComponent(props, () => import("../pages/Order"));
+
+const createComponent = (props, component) => <Bundle load={component}>{C => <C {...props} />}</Bundle>;
 
 // we need to map the `scale` prop we define below
 // to the transform style property
@@ -25,8 +27,8 @@ function mapStyles(styles) {
 // wrap the `spring` helper to use a bouncy config
 function bounce(val) {
     return spring(val, {
-        stiffness: 666,  // 20-3000 越大动画时间较短
-        damping: 66   //22
+        stiffness: 666, // 20-3000 越大动画时间较短
+        damping: 66 //22
     });
 }
 

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import OrderTable from './order-table';
+import OrderList from "./orderList";
+import OrderDetail from "./orderDetail";
 // import { Row, Col } from "antd";
 // import api from "../common/api";
 
@@ -7,9 +8,15 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            showDetail: false
             // allData: {}
         };
     }
+    changeState = val => {
+        this.setState({
+            showDetail: val
+        });
+    };
     // componentWillMount() {
     //     api.vkcPost("supermarketloan/mgr/homepage", "", res => {
     //         this.setState ({allData : res})
@@ -18,11 +25,7 @@ class Home extends Component {
 
     render() {
         // if(Object.keys(this.state.allData).length===0) return false;
-        return (
-            <div>
-                <OrderTable />
-            </div>
-        );
+        return <div>{this.state.showDetail === false ? <OrderList changeState={this.changeState} /> : <OrderDetail changeState={this.changeState}/>}</div>;
     }
 }
 export default Home;

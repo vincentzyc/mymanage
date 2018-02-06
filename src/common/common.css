@@ -98,3 +98,6 @@ html {
 .c4db3ff{
     color: #4db3ff;
 }
+.table-center td, .table-center .ant-table-thead > tr > th{
+    text-align: center;
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import { getUserInfo, getList } from "../redux/actions/actions";
 import { connect } from "react-redux";
-import api from '../common/api';
+import api from "../common/api";
 
 class ListExample extends React.Component {
     constructor(props) {
@@ -13,7 +13,13 @@ class ListExample extends React.Component {
             return (
                 <div>
                     <h1>我的</h1>
-                    <ul>{this.props.NoInfo.list.map((item,i) => <li key={i} className="mg20">{item.widgetName}</li>)}</ul>
+                    <ul>
+                        {this.props.NoInfo.list.map((item, i) => (
+                            <li key={i} className="mg20">
+                                {item.widgetName}
+                            </li>
+                        ))}
+                    </ul>
                 </div>
             );
         }
@@ -27,15 +33,15 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
     return {
         getUserInfo,
         getlist: () => {
-            api.jqPost('supermarketloan/getlist','',(res)=>{
+            api.jqPost("supermarketloan/getlist", "", res => {
                 return dispatch(getList(res));
-            })
+            });
         }
-    }
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListExample);

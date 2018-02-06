@@ -2,15 +2,19 @@
 const api = {
     baseUrl() {
         // if (process.env.NODE_ENV === "development") {
-            // return "http://120.25.85.234:20525/";
+        // return "http://120.25.85.234:20525/";
         return "http://192.168.218.247:8022/";
         // }
         // return "http://www.52zhudai.com/";
     },
     jqPost(url, data, callback) {
+        // if (url.indexOf("http://") === -1) {
+        if (!url.includes("http://")) {
+            url = this.baseUrl() + url;
+        }
         $.ajax({
             type: "POST",
-            url: this.baseUrl()+url,
+            url: url,
             async: true, //true=>异步，会继续执行后续代码; false=>同步，直到这个AJAX执行完毕后才会继续执行后续代码
             data: data,
             success: callback,
@@ -54,7 +58,7 @@ const api = {
             .ajax(this.baseUrl() + url, data)
             .done(res => {
                 if (res.Code === 100) {
-                    if (res.Result.code === '0') {
+                    if (res.Result.code === "0") {
                         return callback(res.Result.data);
                     } else {
                         alert(res.Result.msg);

@@ -1,13 +1,9 @@
 import { combineReducers } from 'redux';
-import {
-    GET_SUCCESS,
-    GET_FAIL
-} from '../actions/actions';
 
 let reducers = combineReducers({
     UserInfo: function(state = {}, action) {
         switch(action.type) {
-            case GET_SUCCESS:
+            case 'GET_SUCCESS':
                 return action.payload;
             default:
                 return state;
@@ -15,11 +11,19 @@ let reducers = combineReducers({
     },
     NoInfo: function(state = {}, action) {
         switch(action.type) {
-            case GET_FAIL:
+            case 'GET_FAIL':
                 return action.payload;
             default:
                 return state;
         }
+    },
+    ApplyDetail:function (state = {} , action) {
+        // switch(action.type) {
+        //     case GET_ORDER_DETAIL:
+                return action.payload || '';
+        //     default:
+        //         return state;
+        // }
     }
 });
 
