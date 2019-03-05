@@ -31,7 +31,7 @@ class CheckPhone extends React.Component {
         return (
             <div className="mg20">
                 <h1 className="mg-b20">验证是否为移动号码</h1>
-                <Input type="tel" value={this.state.value} maxLength="11" onChange={this.handleChange} placeholder="请输入手机号码" />
+                <Input type="tel" value={this.state.value} maxLength={11} onChange={this.handleChange} placeholder="请输入手机号码" />
                 <h3 className="mg-t20 mg-b20 flex align-middle">
                     输入的号码：{this.state.value}
                     <Button type="primary" onClick={this.handleClick}>

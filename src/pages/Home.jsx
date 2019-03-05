@@ -10,10 +10,7 @@ class Home extends Component {
         };
     }
     componentWillMount() {
-        // api.jqPost("getuserinfo", { userName: "zzzz" }, res => {
-        //     console.log(res);
-        // });
-        api.vkcPost("supermarketloan/mgr/homepage", "", res => {
+        api.jqPost("homepage", "", res => {
             this.setState ({allData : res})
         });
     }

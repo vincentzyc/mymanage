@@ -77,7 +77,7 @@ class TableList extends Component {
                 pageSize: pageSize
             }
         };
-        api.vkcPostAll("supermarketloan/mgr/loanapply/getuserloanapply", param, res => {
+        api.jqPost("supermarketloan/mgr/loanapply/getuserloanapply", param, res => {
             console.log(res);
             if (res.code === "0") {
                 // res.data.forEach((element, index) => {
@@ -122,10 +122,9 @@ const mapDispatchToProps = dispatch => {
     return {
         getApplyDetail: (text, record, props) => {
             props.changeState(true);
-            api.vkcPost("supermarketloan/mgr/loanapply/getuserloandetail", { param: { applyId: record.applyId } }, res => {
-                console.log(res);
-                return dispatch(getApplyDetail(res));
-            });
+            setTimeout(()=>{
+              return dispatch(getApplyDetail({"订单id":record.applyId}));
+            },200)
         }
     };
 };

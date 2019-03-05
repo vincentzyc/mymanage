@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import OrderList from "./orderList";
 import OrderDetail from "./orderDetail";
-// import { Row, Col } from "antd";
-// import api from "../common/api";
 
 class Home extends Component {
     constructor(props) {
